@@ -10,7 +10,7 @@ services:
     restart: always
     volumes:
       - ./prometheus:/etc/prometheus/
-      - prometheus_data:/prometheus
+      - /home/ubuntu/my-docker-volumes/prometheus_data:/prometheus 
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -74,7 +74,7 @@ services:
     environment:
       GF_INSTALL_PLUGINS: 'grafana-clock-panel,grafana-simple-json-datasource'
     volumes:
-      - grafana_data:/var/lib/grafana
+      - /home/ubuntu/my-docker-volumes/grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
     env_file:
       - ./grafana/config.monitoring
